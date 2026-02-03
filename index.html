@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Peachwood Angoras — ethical, cosy angora rabbitry. Available angoras, our rabbits, care info, and contact." />
+  <title>Peachwood Angoras</title>
+
+  <!-- Fonts (cute/cosy) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Peachwood palette (from your logo vibe) */
+      --cream:#FAF6EF;
+      --peach:#E8B5A3;
+      --sage:#8FA79A;
+      --brown:#8A5A3C;
+
+      --ink:#3a2a22;
+      --card:#fffdf9;
+      --border: rgba(138, 90, 60, 0.18);
+      --shadow: 0 10px 30px rgba(58, 42, 34, 0.08);
+
+      --radius: 18px;
+      --radius-pill: 999px;
+
+      --max: 1080px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Lora", serif;
+      line-height: 1.6;
+    }
+
+    a{ color: var(--brown); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    /* Layout helpers */
+    .container{
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+    .stack{ display: grid; gap: 18px; }
+    .grid{
+      display:grid;
+      gap: 18px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--cream) 92%, white 8%);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .logo{
+      width: 220px;         /* adjust this if you want */
+      max-width: 45vw;
+      height: auto;
+      display:block;
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap: 10px;
+      margin:0;
+      padding:0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{
+      display:inline-block;
+      padding: 8px 12px;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+    }
+    nav a:hover{
+      background: color-mix(in srgb, var(--peach) 28%, transparent);
+      text-decoration:none;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 34px 0 18px;
+    }
+    .hero-card{
+      background: linear-gradient(180deg,
+        color-mix(in srgb, var(--peach) 18%, white 82%),
+        color-mix(in srgb, var(--cream) 85%, white 15%)
+      );
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      overflow:hidden;
+    }
+    .hero h1{
+      font-family: "Playfair Display", serif;
+      color: var(--brown);
+      margin: 0 0 8px;
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.1;
+    }
+    .hero p{
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+      max-width: 60ch;
+    }
+
+    .btn-row{ display:flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn{
+      display:inline-block;
+      padding: 11px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      text-decoration:none;
+    }
+    .btn.primary{
+      background: var(--peach);
+      color: white;
+      border-color: color-mix(in srgb, var(--peach) 75%, var(--brown));
+      box-shadow: 0 8px 18px rgba(232, 181, 163, 0.35);
+    }
+    .btn.primary:hover{ filter: brightness(0.97); text-decoration:none; }
+    .btn.ghost{
+      background: transparent;
+      color: var(--brown);
+    }
+    .btn.ghost:hover{
+      background: color-mix(in srgb, var(--sage) 16%, transparent);
+      text-decoration:none;
+    }
+
+    /* Sections */
+    section{
+      padding: 22px 0;
+    }
+    .section-title{
+      font-family:"Playfair Display", serif;
+      color: var(--brown);
+      font-size: 1.8rem;
+      margin: 0 0 10px;
+    }
+    .muted{ color: rgba(58, 42, 34, 0.78); }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 8px 18px rgba(58, 42, 34, 0.06);
+    }
+
+    .pill{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 0.9rem;
+      background: color-mix(in srgb, var(--sage) 18%, transparent);
+      border: 1px solid color-mix(in srgb, var(--sage) 35%, transparent);
+      color: var(--brown);
+    }
+
+    /* Feature list */
+    .features{
+      display:grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 10px;
+    }
+    .feature{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+    }
+    .feature strong{ color: var(--brown); }
+
+    /* Rabbit cards */
+    .rabbits{
+      display:grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .rabbit{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    .rabbit .photo{
+      aspect-ratio: 4 / 3;
+      background: color-mix(in srgb, var(--cream) 70%, white 30%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-bottom: 1px solid var(--border);
+      color: rgba(58, 42, 34, 0.65);
+      font-weight: 600;
+    }
+    .rabbit .body{ padding: 14px; }
+    .rabbit h3{
+      font-family:"Playfair Display", serif;
+      margin: 0 0 6px;
+      color: var(--brown);
+      font-size: 1.25rem;
+    }
+    .rabbit p{ margin: 0 0 10px; }
+    .meta{ display:flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Footer */
+    footer{
+      margin-top: 18px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      color: rgba(58, 42, 34, 0.72);
+    }
+    footer .small{ font-size: 0.95rem; }
+
+    /* Tiny screen nav spacing */
+    @media (max-width: 560px){
+      .header-inner{ align-items:flex-start; }
+      nav ul{ justify-content:flex-start; }
+      .brand{ min-width: unset; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- Replace "logo.png" with your actual logo filename in the repo -->
+        <img class="logo" src="logo.png" alt="Peachwood Angoras logo" />
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#rabbits">Our Rabbits</a></li>
+          <li><a href="#available">Available</a></li>
+          <li><a href="#care">Care</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <div class="container hero">
+      <div class="hero-card">
+        <h1>Peachwood Angoras</h1>
+        <p class="muted">
+          Ethical, cosy angora rabbits raised with care, kindness, and a little bit of peachwood magic.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn primary" href="#available">View Available Angoras</a>
+          <a class="btn ghost" href="#contact">Enquire</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container stack">
+        <h2 class="section-title">About Peachwood</h2>
+        <div class="card">
+          <p>
+            Welcome to Peachwood Angoras — a small, ethical angora rabbitry focused on health, temperament,
+            and beautiful fibre. Our rabbits are handled gently, groomed regularly, and raised with lots of love.
+          </p>
+          <div class="features">
+            <div class="feature"><strong>Ethical breeding</strong><br><span class="muted">Care-first, quality over quantity.</span></div>
+            <div class="feature"><strong>Cosy companions</strong><br><span class="muted">Calm temperaments, well-socialised.</span></div>
+            <div class="feature"><strong>Fibre & fluff</strong><br><span class="muted">Angora coats kept healthy and tidy.</span></div>
+            <div class="feature"><strong>Lifetime support</strong><br><span class="muted">We’re here to help after they go home.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Rabbits -->
+    <section id="rabbits">
+      <div class="container stack">
+        <h2 class="section-title">Our Rabbits</h2>
+        <p class="muted">Add your rabbits here over time — you can start with just one.</p>
+
+        <div class="rabbits">
+          <article class="rabbit">
+            <div class="photo">Add photo: /images/rabbit1.jpg</div>
+            <div class="body">
+              <h3>Rabbit Name</h3>
+              <p class="muted">Breed • Colour • Year • A sweet personality note goes here.</p>
+              <div class="meta">
+                <span class="pill">gentle</span>
+                <span class="pill">handled daily</span>
+                <span class="pill">groomed</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="rabbit">
+            <div class="photo">Add photo: /images/rabbit2.jpg</div>
+            <div class="body">
+              <h3>Rabbit Name</h3>
+              <p class="muted">Breed • Colour • Year • Another cute note.</p>
+              <div class="meta">
+                <span class="pill">curious</span>
+                <span class="pill">soft coat</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="rabbit">
+            <div class="photo">Add photo: /images/rabbit3.jpg</div>
+            <div class="body">
+              <h3>Rabbit Name</h3>
+              <p class="muted">Breed • Colour • Year • A calm, cosy description.</p>
+              <div class="meta">
+                <span class="pill">calm</span>
+                <span class="pill">friendly</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Available -->
+    <section id="available">
+      <div class="container stack">
+        <h2 class="section-title">Available Angoras</h2>
+
+        <div class="card stack">
+          <p class="muted">
+            This section is where you’ll keep things current. When you have no availability, it’s totally fine to say so.
+          </p>
+
+          <div class="rabbits">
+            <article class="rabbit">
+              <div class="photo">Photo placeholder</div>
+              <div class="body">
+                <h3>Reserved / Available</h3>
+                <p class="muted">DOB • Breed • Colour • Ready date • Notes</p>
+                <div class="meta">
+                  <span class="pill">available</span>
+                  <span class="pill">pet home</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="rabbit">
+              <div class="photo">Photo placeholder</div>
+              <div class="body">
+                <h3>No rabbits available right now</h3>
+                <p class="muted">Join the waiting list or contact us to chat about upcoming plans.</p>
+                <div class="meta">
+                  <span class="pill">waiting list</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn primary" href="#contact">Contact for Availability</a>
+            <a class="btn ghost" href="#care">Care Info</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Care -->
+    <section id="care">
+      <div class="container stack">
+        <h2 class="section-title">Care Information</h2>
+        <div class="card stack">
+          <p class="muted">
+            Angoras are wonderfully fluffy, but they do need regular grooming. Here’s a gentle starter guide.
+          </p>
+          <div class="features">
+            <div class="feature"><strong>Grooming</strong><br><span class="muted">Regular brushing/trim schedule to prevent matting.</span></div>
+            <div class="feature"><strong>Diet</strong><br><span class="muted">Unlimited hay, quality pellets, fresh water, safe greens.</span></div>
+            <div class="feature"><strong>Housing</strong><br><span class="muted">Clean, dry, draft-free; space to hop and stretch.</span></div>
+            <div class="feature"><strong>Handling</strong><br><span class="muted">Calm handling builds confidence and trust.</span></div>
+          </div>
+          <p class="muted">
+            (Later, we can expand this into a full care page with your exact routine.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container stack">
+        <h2 class="section-title">Contact</h2>
+        <div class="card stack">
+          <p class="muted">
+            The simplest contact method for a one-page site is email (no form setup required).
+          </p>
+
+          <!-- Replace the email below with yours -->
+          <div class="btn-row">
+            <a class="btn primary" href="mailto:peachwoodangoras@example.com?subject=Peachwood%20Angoras%20Enquiry">
+              Email Peachwood Angoras
+            </a>
+            <a class="btn ghost" href="#available">Check Availability</a>
+          </div>
+
+          <p class="muted small">
+            Tip: If you later want a contact form, we can add one using a free service (still single-file).
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container stack">
+      <div class="small">
+        <strong style="color: var(--brown); font-family: 'Playfair Display', serif;">Peachwood Angoras</strong><br>
+        <span class="muted">© <span id="year"></span> • Built with love and fluff.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
