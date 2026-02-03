@@ -227,6 +227,26 @@
       color: rgba(58, 42, 34, 0.65);
       font-weight: 600;
     }
+
+    /* ✅ Two-photo layout for rabbit cards */
+    .rabbit .photo.photo-grid{
+      display:grid;                 /* override the flex above */
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      padding: 6px;
+      align-items: stretch;
+      justify-content: stretch;
+      color: inherit;
+      font-weight: inherit;
+    }
+    .rabbit .photo.photo-grid img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      display:block;
+    }
+
     .rabbit .body{ padding: 14px; }
     .rabbit h3{
       font-family:"Playfair Display", serif;
@@ -370,7 +390,10 @@
 
           <div class="rabbits">
             <article class="rabbit">
-              <div class="photo">Photo placeholder</div>
+              <div class="photo photo-grid">
+                <img src="images/rabbit-a-1.jpg" alt="Available angora rabbit photo 1">
+                <img src="images/rabbit-a-2.jpg" alt="Available angora rabbit photo 2">
+              </div>
               <div class="body">
                 <h3>Reserved / Available</h3>
                 <p class="muted">DOB • Breed • Colour • Ready date • Notes</p>
@@ -382,6 +405,7 @@
             </article>
 
             <article class="rabbit">
+              <!-- Optional: keep as placeholder or also use 2 photos -->
               <div class="photo">Photo placeholder</div>
               <div class="body">
                 <h3>No rabbits available right now</h3>
